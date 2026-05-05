@@ -24,6 +24,7 @@ import {
   CreateQuizSchema,
 } from "../schemas/createQuizSchema";
 import { QuestionCard } from "./QuestionCard";
+import { createQuizAction } from "@/shared/actions/quiz";
 
 const DEFAULT_QUESTION: CreateQuizSchema["questions"][number] = {
   type: "boolean",
@@ -46,7 +47,7 @@ export const CreateQuizForm = () => {
   });
 
   const onSubmit = async (data: CreateQuizSchema) => {
-    console.log(data);
+    await createQuizAction(data);
   };
 
   return (

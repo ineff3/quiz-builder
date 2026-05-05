@@ -34,17 +34,25 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
       },
+      type: {
+        type: Sequelize.ENUM('boolean', 'input', 'checkbox'),
+        allowNull: false,
+      },
       text: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
       options: {
         type: Sequelize.ARRAY(Sequelize.TEXT),
-        allowNull: false,
+        allowNull: true,
       },
-      correctOptionIndex: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      correctAnswer: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      correctOptionIndices: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER),
+        allowNull: true,
       },
       quizId: {
         type: Sequelize.INTEGER,
@@ -70,5 +78,8 @@ module.exports = {
   async down(queryInterface) {
     await queryInterface.dropTable('questions');
     await queryInterface.dropTable('quizzes');
+    await queryInterface.sequelize.query(
+      'DROP TYPE IF EXISTS "enum_questions_type";',
+    );
   },
 };

@@ -1,7 +1,11 @@
+export type QuestionType = 'boolean' | 'input' | 'checkbox';
+
 export class CreateQuestionDto {
+  type: QuestionType;
   text: string;
-  options: string[];
-  correctOptionIndex: number;
+  options?: string[];
+  correctAnswer?: string;
+  correctOptionIndices?: number[];
 }
 
 export class CreateQuizDto {
