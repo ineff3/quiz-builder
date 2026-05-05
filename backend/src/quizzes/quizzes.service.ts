@@ -28,10 +28,11 @@ export class QuizzesService {
     { id: number; title: string; questionCount: number }[]
   > {
     const quizzes = await this.quizModel.findAll({ include: [Question] });
+
     return quizzes.map((q) => ({
-      id: q.id,
-      title: q.title,
-      questionCount: q.questions?.length ?? 0,
+      id: q.get('id'),
+      title: q.get('title'),
+      questionCount: q.get('questions')?.length ?? 0,
     }));
   }
 

@@ -40,11 +40,8 @@ export const QuestionCard = ({ index, onRemove, canRemove }: Props) => {
 
   const handleTypeChange = (type: QuestionType) => {
     if (type === questionType) return;
-    form.unregister(`questions.${index}`, { keepValue: false });
-    form.setValue(`questions.${index}`, DEFAULT_BY_TYPE[type], {
-      shouldValidate: false,
-      shouldDirty: true,
-      shouldTouch: true,
+    form.resetField(`questions.${index}`, {
+      defaultValue: DEFAULT_BY_TYPE[type],
     });
   };
   return (
@@ -76,7 +73,12 @@ export const QuestionCard = ({ index, onRemove, canRemove }: Props) => {
               >
                 <FormControl>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a type"></SelectValue>
+                    <SelectValue placeholder="Select a type">
+                      {(value: QuestionType) =>
+                        QUESTION_TYPES.find((t) => t.value === value)?.label ??
+                        "Select a type"
+                      }
+                    </SelectValue>
                   </SelectTrigger>
                 </FormControl>
 
