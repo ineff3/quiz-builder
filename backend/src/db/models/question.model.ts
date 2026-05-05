@@ -17,14 +17,23 @@ export class Question extends Model {
   @Column(DataType.INTEGER)
   declare id: number;
 
+  @Column({
+    type: DataType.ENUM('boolean', 'input', 'checkbox'),
+    allowNull: false,
+  })
+  type: 'boolean' | 'input' | 'checkbox';
+
   @Column({ type: DataType.TEXT, allowNull: false })
   text: string;
 
-  @Column({ type: DataType.ARRAY(DataType.TEXT), allowNull: false })
-  options: string[];
+  @Column({ type: DataType.ARRAY(DataType.TEXT), allowNull: true })
+  options: string[] | null;
 
-  @Column({ type: DataType.INTEGER, allowNull: false })
-  correctOptionIndex: number;
+  @Column({ type: DataType.TEXT, allowNull: true })
+  correctAnswer: string | null;
+
+  @Column({ type: DataType.ARRAY(DataType.INTEGER), allowNull: true })
+  correctOptionIndices: number[] | null;
 
   @ForeignKey(() => Quiz)
   @Column({ type: DataType.INTEGER, allowNull: false })
