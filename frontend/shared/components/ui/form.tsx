@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
 import {
   Controller,
   FormProvider,
@@ -10,10 +10,10 @@ import {
   type ControllerProps,
   type FieldPath,
   type FieldValues,
-} from "react-hook-form";
+} from 'react-hook-form';
 
-import { cn } from "@/shared/lib/utils";
-import { Label } from "@/shared/components/ui/label";
+import { cn } from '@/shared/lib/utils';
+import { Label } from '@/shared/components/ui/label';
 
 const Form = FormProvider;
 
@@ -49,7 +49,7 @@ const useFormField = () => {
   const fieldState = getFieldState(fieldContext.name, formState);
 
   if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>");
+    throw new Error('useFormField should be used within <FormField>');
   }
 
   const { id } = itemContext;
@@ -80,7 +80,7 @@ const FormItem = ({
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div className={cn("grid gap-2", className)} {...props} />
+      <div className={cn('grid gap-2', className)} {...props} />
     </FormItemContext.Provider>
   );
 };
@@ -93,7 +93,7 @@ const FormLabel = ({
 
   return (
     <Label
-      className={cn(error && "text-destructive", className)}
+      className={cn(error && 'text-destructive', className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -125,7 +125,7 @@ const FormDescription = ({
   return (
     <p
       id={formDescriptionId}
-      className={cn("text-muted-foreground text-sm", className)}
+      className={cn('text-muted-foreground text-sm', className)}
       {...props}
     />
   );
@@ -136,14 +136,14 @@ const FormMessage = ({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) => {
   const { error, formMessageId } = useFormField();
-  const body = error ? String(error?.message ?? "") : props.children;
+  const body = error ? String(error?.message ?? '') : props.children;
 
   if (!body) return null;
 
   return (
     <p
       id={formMessageId}
-      className={cn("text-destructive text-sm", className)}
+      className={cn('text-destructive text-sm', className)}
       {...props}
     >
       {body}

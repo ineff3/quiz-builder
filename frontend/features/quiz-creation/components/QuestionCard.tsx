@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useFormContext } from "react-hook-form";
-import { Trash2 } from "lucide-react";
-import { Card, CardContent, CardHeader } from "@/shared/components/ui/card";
+import { useFormContext } from 'react-hook-form';
+import { Trash2 } from 'lucide-react';
+import { Card, CardContent, CardHeader } from '@/shared/components/ui/card';
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/shared/components/ui/form";
-import { Input } from "@/shared/components/ui/input";
+} from '@/shared/components/ui/form';
+import { Input } from '@/shared/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -18,15 +18,15 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shared/components/ui/select";
-import { Button } from "@/shared/components/ui/button";
-import { CreateQuizSchema, QuestionSchema } from "../schemas/createQuizSchema";
-import { QUESTION_TYPES, DEFAULT_BY_TYPE } from "../constants/questionTypes";
-import { BooleanQuestionFields } from "./BooleanQuestionFields";
-import { InputQuestionFields } from "./InputQuestionFields";
-import { CheckboxQuestionFields } from "./CheckboxQuestionFields";
+} from '@/shared/components/ui/select';
+import { Button } from '@/shared/components/ui/button';
+import { CreateQuizSchema, QuestionSchema } from '../schemas/createQuizSchema';
+import { QUESTION_TYPES, DEFAULT_BY_TYPE } from '../constants/questionTypes';
+import { BooleanQuestionFields } from './BooleanQuestionFields';
+import { InputQuestionFields } from './InputQuestionFields';
+import { CheckboxQuestionFields } from './CheckboxQuestionFields';
 
-type QuestionType = QuestionSchema["type"];
+type QuestionType = QuestionSchema['type'];
 
 interface Props {
   index: number;
@@ -76,7 +76,7 @@ export const QuestionCard = ({ index, onRemove, canRemove }: Props) => {
                     <SelectValue placeholder="Select a type">
                       {(value: QuestionType) =>
                         QUESTION_TYPES.find((t) => t.value === value)?.label ??
-                        "Select a type"
+                        'Select a type'
                       }
                     </SelectValue>
                   </SelectTrigger>
@@ -111,9 +111,9 @@ export const QuestionCard = ({ index, onRemove, canRemove }: Props) => {
           )}
         />
 
-        {questionType === "boolean" && <BooleanQuestionFields index={index} />}
-        {questionType === "input" && <InputQuestionFields index={index} />}
-        {questionType === "checkbox" && (
+        {questionType === 'boolean' && <BooleanQuestionFields index={index} />}
+        {questionType === 'input' && <InputQuestionFields index={index} />}
+        {questionType === 'checkbox' && (
           <CheckboxQuestionFields index={index} />
         )}
       </CardContent>

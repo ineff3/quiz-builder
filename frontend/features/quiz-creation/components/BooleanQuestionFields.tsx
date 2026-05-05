@@ -1,7 +1,13 @@
 'use client';
 
 import { useFormContext } from 'react-hook-form';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/shared/components/ui/form';
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/shared/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/shared/components/ui/radio-group';
 import { CreateQuizSchema } from '../schemas/createQuizSchema';
 
@@ -27,13 +33,19 @@ export const BooleanQuestionFields = ({ index }: Props) => {
             >
               <div className="flex items-center gap-2">
                 <RadioGroupItem value="true" id={`q${index}-true`} />
-                <FormLabel htmlFor={`q${index}-true`} className="font-normal cursor-pointer">
+                <FormLabel
+                  htmlFor={`q${index}-true`}
+                  className="font-normal cursor-pointer"
+                >
                   True
                 </FormLabel>
               </div>
               <div className="flex items-center gap-2">
                 <RadioGroupItem value="false" id={`q${index}-false`} />
-                <FormLabel htmlFor={`q${index}-false`} className="font-normal cursor-pointer">
+                <FormLabel
+                  htmlFor={`q${index}-false`}
+                  className="font-normal cursor-pointer"
+                >
                   False
                 </FormLabel>
               </div>

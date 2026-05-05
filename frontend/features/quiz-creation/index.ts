@@ -1,2 +1,1 @@
-export { CreateQuizForm } from './components/CreateQuizForm'
-
+export { CreateQuizForm } from './components/CreateQuizForm';

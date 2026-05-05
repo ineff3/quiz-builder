@@ -13,7 +13,7 @@ export type QuizListItem = {
 
 export type QuizQuestion = {
   id: number;
-  type: "boolean" | "input" | "checkbox";
+  type: 'boolean' | 'input' | 'checkbox';
   text: string;
   options: string[] | null;
   correctAnswer: string | null;

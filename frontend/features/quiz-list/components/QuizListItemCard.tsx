@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useTransition } from "react";
-import Link from "next/link";
-import { Trash2 } from "lucide-react";
-import { Card, CardContent } from "@/shared/components/ui/card";
-import { Button } from "@/shared/components/ui/button";
-import { deleteQuizAction } from "@/shared/actions/quiz";
-import type { QuizListItem } from "@/shared/actions/quiz/types";
+import { useTransition } from 'react';
+import Link from 'next/link';
+import { Trash2 } from 'lucide-react';
+import { Card, CardContent } from '@/shared/components/ui/card';
+import { Button } from '@/shared/components/ui/button';
+import { deleteQuizAction } from '@/shared/actions/quiz';
+import type { QuizListItem } from '@/shared/actions/quiz/types';
 
 interface Props {
   quiz: QuizListItem;
@@ -30,8 +30,8 @@ export const QuizListItemCard = ({ quiz }: Props) => {
           <div className="min-w-0 flex-1">
             <h3 className="truncate text-base font-medium">{quiz.title}</h3>
             <p className="text-sm text-muted-foreground">
-              {quiz.questionCount}{" "}
-              {quiz.questionCount === 1 ? "question" : "questions"}
+              {quiz.questionCount}{' '}
+              {quiz.questionCount === 1 ? 'question' : 'questions'}
             </p>
           </div>
           <Button

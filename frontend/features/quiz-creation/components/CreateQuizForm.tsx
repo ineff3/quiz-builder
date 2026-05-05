@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useForm, useFieldArray } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Plus } from "lucide-react";
+import { useForm, useFieldArray } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Plus } from 'lucide-react';
 import {
   Form,
   FormField,
@@ -10,40 +10,40 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-} from "@/shared/components/ui/form";
-import { Input } from "@/shared/components/ui/input";
-import { Button } from "@/shared/components/ui/button";
+} from '@/shared/components/ui/form';
+import { Input } from '@/shared/components/ui/input';
+import { Button } from '@/shared/components/ui/button';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/shared/components/ui/card";
+} from '@/shared/components/ui/card';
 import {
   createQuizSchema,
   CreateQuizSchema,
-} from "../schemas/createQuizSchema";
-import { QuestionCard } from "./QuestionCard";
-import { createQuizAction } from "@/shared/actions/quiz";
+} from '../schemas/createQuizSchema';
+import { QuestionCard } from './QuestionCard';
+import { createQuizAction } from '@/shared/actions/quiz';
 
-const DEFAULT_QUESTION: CreateQuizSchema["questions"][number] = {
-  type: "boolean",
-  text: "",
-  correctAnswer: "true",
+const DEFAULT_QUESTION: CreateQuizSchema['questions'][number] = {
+  type: 'boolean',
+  text: '',
+  correctAnswer: 'true',
 };
 
 export const CreateQuizForm = () => {
   const form = useForm<CreateQuizSchema>({
     resolver: zodResolver(createQuizSchema),
     defaultValues: {
-      title: "",
+      title: '',
       questions: [DEFAULT_QUESTION],
     },
   });
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
-    name: "questions",
+    name: 'questions',
   });
 
   const onSubmit = async (data: CreateQuizSchema) => {

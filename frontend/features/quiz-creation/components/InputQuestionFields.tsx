@@ -1,7 +1,13 @@
 'use client';
 
 import { useFormContext } from 'react-hook-form';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/shared/components/ui/form';
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/shared/components/ui/form';
 import { Input } from '@/shared/components/ui/input';
 import { CreateQuizSchema } from '../schemas/createQuizSchema';
 
@@ -20,7 +26,11 @@ export const InputQuestionFields = ({ index }: Props) => {
         <FormItem>
           <FormLabel>Correct Answer</FormLabel>
           <FormControl>
-            <Input placeholder="Enter expected answer" {...field} value={field.value as string ?? ''} />
+            <Input
+              placeholder="Enter expected answer"
+              {...field}
+              value={(field.value as string) ?? ''}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>

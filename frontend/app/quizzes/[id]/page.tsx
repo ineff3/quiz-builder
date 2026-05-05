@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
-import { getQuizByIdAction } from "@/shared/actions/quiz";
-import { QuizDetail } from "@/features/quiz-detail/components/QuizDetail";
+import { notFound } from 'next/navigation';
+import { getQuizByIdAction } from '@/shared/actions/quiz';
+import { QuizDetail } from '@/features/quiz-detail/components/QuizDetail';
 
 interface Props {
   params: Promise<{ id: string }>;

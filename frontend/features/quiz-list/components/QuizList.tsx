@@ -1,5 +1,5 @@
-import type { QuizListItem } from "@/shared/actions/quiz/types";
-import { QuizListItemCard } from "./QuizListItemCard";
+import type { QuizListItem } from '@/shared/actions/quiz/types';
+import { QuizListItemCard } from './QuizListItemCard';
 
 interface Props {
   quizzes: QuizListItem[];

@@ -2,7 +2,13 @@
 
 import { useFormContext, useFieldArray } from 'react-hook-form';
 import { Trash2, Plus } from 'lucide-react';
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/shared/components/ui/form';
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/shared/components/ui/form';
 import { Input } from '@/shared/components/ui/input';
 import { Checkbox } from '@/shared/components/ui/checkbox';
 import { Button } from '@/shared/components/ui/button';
@@ -21,7 +27,9 @@ export const CheckboxQuestionFields = ({ index }: Props) => {
   });
 
   const correctIndices: number[] =
-    (form.watch(`questions.${index}.correctOptionIndices` as never) as number[]) ?? [];
+    (form.watch(
+      `questions.${index}.correctOptionIndices` as never,
+    ) as number[]) ?? [];
 
   const toggleCorrectIndex = (optionIndex: number) => {
     const current = correctIndices;
@@ -52,7 +60,9 @@ export const CheckboxQuestionFields = ({ index }: Props) => {
                   />
                   <FormField
                     control={form.control}
-                    name={`questions.${index}.options.${optionIndex}.value` as never}
+                    name={
+                      `questions.${index}.options.${optionIndex}.value` as never
+                    }
                     render={({ field: optionField }) => (
                       <FormItem className="flex-1">
                         <FormControl>

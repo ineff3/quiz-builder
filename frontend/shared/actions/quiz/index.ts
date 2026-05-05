@@ -1,15 +1,11 @@
-"use server";
+'use server';
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { CreateQuizSchema } from "@/features/quiz-creation/schemas/createQuizSchema";
-import type {
-  ActionResult,
-  QuizDetail,
-  QuizListItem,
-} from "./types";
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { CreateQuizSchema } from '@/features/quiz-creation/schemas/createQuizSchema';
+import type { ActionResult, QuizDetail, QuizListItem } from './types';
 
-const GENERAL_ERROR_MESSAGE = "Something went wrong. Please try again.";
+const GENERAL_ERROR_MESSAGE = 'Something went wrong. Please try again.';
 
 export const createQuizAction = async (
   data: CreateQuizSchema,
@@ -17,7 +13,7 @@ export const createQuizAction = async (
   const payload = {
     title: data.title,
     questions: data.questions.map((q) => {
-      if (q.type === "checkbox") {
+      if (q.type === 'checkbox') {
         return {
           type: q.type,
           text: q.text,
@@ -35,8 +31,8 @@ export const createQuizAction = async (
 
   try {
     const res = await fetch(`${process.env.API_URL}/quizzes`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
@@ -48,8 +44,8 @@ export const createQuizAction = async (
     return { success: false, message: GENERAL_ERROR_MESSAGE };
   }
 
-  revalidatePath("/quizzes");
-  redirect("/quizzes");
+  revalidatePath('/quizzes');
+  redirect('/quizzes');
 };
 
 export const getQuizzesAction = async (): Promise<
@@ -57,7 +53,7 @@ export const getQuizzesAction = async (): Promise<
 > => {
   try {
     const res = await fetch(`${process.env.API_URL}/quizzes`, {
-      cache: "no-store",
+      cache: 'no-store',
     });
 
     if (!res.ok) {
@@ -77,7 +73,7 @@ export const getQuizByIdAction = async (
 ): Promise<ActionResult<QuizDetail>> => {
   try {
     const res = await fetch(`${process.env.API_URL}/quizzes/${id}`, {
-      cache: "no-store",
+      cache: 'no-store',
     });
 
     if (!res.ok) {
@@ -97,14 +93,14 @@ export const deleteQuizAction = async (
 ): Promise<ActionResult<void>> => {
   try {
     const res = await fetch(`${process.env.API_URL}/quizzes/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     });
 
     if (!res.ok) {
       return { success: false, message: GENERAL_ERROR_MESSAGE };
     }
 
-    revalidatePath("/quizzes");
+    revalidatePath('/quizzes');
     return { success: true };
   } catch (err) {
     console.error(err);

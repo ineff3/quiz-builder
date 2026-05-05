@@ -1,5 +1,5 @@
-import type { QuizDetail as QuizDetailType } from "@/shared/actions/quiz/types";
-import { QuestionView } from "./QuestionView";
+import type { QuizDetail as QuizDetailType } from '@/shared/actions/quiz/types';
+import { QuestionView } from './QuestionView';
 
 interface Props {
   quiz: QuizDetailType;

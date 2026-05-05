@@ -1,10 +1,10 @@
-import { Card, CardContent, CardHeader } from "@/shared/components/ui/card";
-import type { QuizQuestion } from "@/shared/actions/quiz/types";
+import { Card, CardContent, CardHeader } from '@/shared/components/ui/card';
+import type { QuizQuestion } from '@/shared/actions/quiz/types';
 
-const TYPE_LABEL: Record<QuizQuestion["type"], string> = {
-  boolean: "Boolean (True / False)",
-  input: "Input (Short Answer)",
-  checkbox: "Checkbox (Multiple Choice)",
+const TYPE_LABEL: Record<QuizQuestion['type'], string> = {
+  boolean: 'Boolean (True / False)',
+  input: 'Input (Short Answer)',
+  checkbox: 'Checkbox (Multiple Choice)',
 };
 
 interface Props {
@@ -26,25 +26,25 @@ export const QuestionView = ({ question, index }: Props) => {
       <CardContent className="space-y-3">
         <p className="text-base font-medium">{question.text}</p>
 
-        {question.type === "boolean" && (
+        {question.type === 'boolean' && (
           <p className="text-sm text-muted-foreground">
-            Correct answer:{" "}
+            Correct answer:{' '}
             <span className="font-medium text-foreground">
-              {question.correctAnswer === "true" ? "True" : "False"}
+              {question.correctAnswer === 'true' ? 'True' : 'False'}
             </span>
           </p>
         )}
 
-        {question.type === "input" && (
+        {question.type === 'input' && (
           <p className="text-sm text-muted-foreground">
-            Correct answer:{" "}
+            Correct answer:{' '}
             <span className="font-medium text-foreground">
               {question.correctAnswer}
             </span>
           </p>
         )}
 
-        {question.type === "checkbox" && (
+        {question.type === 'checkbox' && (
           <ul className="space-y-1">
             {question.options?.map((opt, i) => {
               const isCorrect = question.correctOptionIndices?.includes(i);
@@ -53,11 +53,11 @@ export const QuestionView = ({ question, index }: Props) => {
                   key={i}
                   className={
                     isCorrect
-                      ? "text-sm font-medium text-foreground"
-                      : "text-sm text-muted-foreground"
+                      ? 'text-sm font-medium text-foreground'
+                      : 'text-sm text-muted-foreground'
                   }
                 >
-                  {isCorrect ? "✓ " : "• "}
+                  {isCorrect ? '✓ ' : '• '}
                   {opt}
                 </li>
               );

@@ -11,5 +11,10 @@ export const QUESTION_TYPES = [
 export const DEFAULT_BY_TYPE: Record<QuestionType, QuestionSchema> = {
   boolean: { type: 'boolean', text: '', correctAnswer: 'true' },
   input: { type: 'input', text: '', correctAnswer: '' },
-  checkbox: { type: 'checkbox', text: '', options: [{ value: '' }, { value: '' }], correctOptionIndices: [] },
+  checkbox: {
+    type: 'checkbox',
+    text: '',
+    options: [{ value: '' }, { value: '' }],
+    correctOptionIndices: [],
+  },
 };
