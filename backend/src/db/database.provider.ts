@@ -1,16 +1,21 @@
 import { SequelizeModule } from '@nestjs/sequelize';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Quiz } from './models/quiz.model';
 import { Question } from './models/question.model';
 
 export const databaseProvider = [
-  SequelizeModule.forRoot({
-    dialect: 'postgres',
-    host: process.env.POSTGRES_HOST,
-    port: Number(process.env.POSTGRES_PORT),
-    username: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DB,
-    models: [Quiz, Question],
-    logging: false,
+  SequelizeModule.forRootAsync({
+    imports: [ConfigModule],
+    inject: [ConfigService],
+    useFactory: (config: ConfigService) => ({
+      dialect: 'postgres',
+      host: config.get<string>('POSTGRES_HOST'),
+      port: config.get<number>('POSTGRES_PORT'),
+      username: config.get<string>('POSTGRES_USER'),
+      password: config.get<string>('POSTGRES_PASSWORD'),
+      database: config.get<string>('POSTGRES_DB'),
+      models: [Quiz, Question],
+      logging: false,
+    }),
   }),
 ];
