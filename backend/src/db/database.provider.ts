@@ -11,7 +11,6 @@ export const databaseProvider = [
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DB,
     models: [Quiz, Question],
-    synchronize: true,
     logging: false,
   }),
 ];
