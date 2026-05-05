@@ -1,5 +1,8 @@
 # quiz-builder
 
+<img width="784" height="670" alt="image" src="https://github.com/user-attachments/assets/2f345d63-a558-48f0-8e64-6deffc99d2b9" />
+
+
 Monorepo with a NestJS backend and a Next.js frontend.
 
 ```
